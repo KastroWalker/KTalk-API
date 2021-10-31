@@ -1,16 +1,16 @@
 package com.example.plugins
 
+import com.example.controllers.userRoute
 import io.ktor.routing.*
-import io.ktor.http.*
 import io.ktor.application.*
+import io.ktor.http.*
 import io.ktor.response.*
-import io.ktor.request.*
 
 fun Application.configureRouting() {
-
     routing {
         get("/") {
-                call.respondText("Hello World!")
-            }
+            call.respondText("Ktalk API version 1.0", status = HttpStatusCode.OK)
+        }
+        userRoute()
     }
 }
