@@ -8,6 +8,7 @@ fun main(args: Array<String>): Unit = EngineMain.main(args)
 
 @Suppress("unused")
 fun Application.module() {
+    configureSecurity()
     configureRouting()
     configureSerialization()
     configureHTTP()

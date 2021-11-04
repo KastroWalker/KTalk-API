@@ -4,6 +4,7 @@ import com.example.entities.User
 import com.example.services.UserService
 import com.example.utils.InvalidProperty
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.http.*
 import io.ktor.request.*
 import io.ktor.response.*
@@ -14,7 +15,9 @@ import org.valiktor.ConstraintViolationException
 fun Route.userRoute() {
     route("/users") {
         insertUser()
-        protected()
+        authenticate("auth-jwt") {
+            fetchUsers()
+        }
     }
 }
 
@@ -37,7 +40,7 @@ fun Route.insertUser() {
     }
 }
 
-fun Route.protected() {
+fun Route.fetchUsers() {
     get {
         return@get call.respondText("Rota protegida")
     }

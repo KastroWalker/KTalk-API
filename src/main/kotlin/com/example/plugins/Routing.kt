@@ -1,5 +1,6 @@
 package com.example.plugins
 
+import com.example.controllers.loginRouter
 import com.example.controllers.userRoute
 import io.ktor.routing.*
 import io.ktor.application.*
@@ -12,5 +13,6 @@ fun Application.configureRouting() {
             call.respondText("Ktalk API version 1.0", status = HttpStatusCode.OK)
         }
         userRoute()
+        loginRouter()
     }
 }
